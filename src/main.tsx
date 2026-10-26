@@ -1,0 +1,3 @@
+import React from 'react'; import ReactDOM from 'react-dom/client'; import { Amplify } from 'aws-amplify'; import App from './App'; import './style.css';
+const e=import.meta.env; if(e.VITE_AWS_REGION&&e.VITE_COGNITO_USER_POOL_ID&&e.VITE_COGNITO_CLIENT_ID&&e.VITE_COGNITO_DOMAIN){Amplify.configure({Auth:{Cognito:{userPoolId:e.VITE_COGNITO_USER_POOL_ID,userPoolClientId:e.VITE_COGNITO_CLIENT_ID,loginWith:{oauth:{domain:e.VITE_COGNITO_DOMAIN,scopes:['openid','email','profile'],redirectSignIn:[window.location.origin+'/'],redirectSignOut:[window.location.origin+'/'],responseType:'code'}}}}});}
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);
